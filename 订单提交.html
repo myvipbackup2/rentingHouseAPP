@@ -137,9 +137,9 @@
                 面形成，吗存在明显差那么多注册。
             </p>
         </div>
-
         <div class="checkbox clearfix">
-            <div class="cbox checked fl" role="checkbox" onclick="this.className=/checked/ig.test(this.className)?this.className.replace('checked',''):(this.className+' checked')"></div>
+            <div class="cbox checked fl" role="checkbox"
+                 onclick="this.className=/checked/ig.test(this.className)?this.className.replace('checked',''):(this.className+' checked')"></div>
             <a class="fl" href="#">我已阅读并同意网站协议</a>
         </div>
 
@@ -150,5 +150,9 @@
     </div>
 
 </div>
+<script>
+    document.oncontextmenu = new Function("event.returnValue=false;");
+    document.onselectstart = new Function("event.returnValue=false;");
+</script>
 </body>
 </html>

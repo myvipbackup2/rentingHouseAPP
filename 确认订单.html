@@ -136,8 +136,8 @@
     <div class="pay">
         <h2 class="order-title">支付方式</h2>
         <div class="pay-way clearfix">
-            <button class="fl">支付宝</button>
-            <button class="fr sel">微信</button>
+            <button id="alipay" class="fl">支付宝</button>
+            <button id="wechat" class="fr sel">微信</button>
         </div>
     </div>
 
@@ -146,5 +146,17 @@
     <a href="#" class="back fl">返回</a>
 
 </div>
+<script>
+    document.oncontextmenu = new Function("event.returnValue=false;");
+    document.onselectstart = new Function("event.returnValue=false;");
+</script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+    $(function () {
+        $('.pay-way').on('click','button',function () {
+            $(this).addClass('sel').siblings().removeClass('sel');
+        });
+    });
+</script>
 </body>
 </html>
