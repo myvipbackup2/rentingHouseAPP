@@ -43,6 +43,7 @@ body {
     display: block;
     height: .8rem;
     line-height: .8rem;
+    font-weight:600;
 }
 
 .line {
@@ -165,7 +166,8 @@ body {
     border:1px solid #a4aaa7;
     color: #93939c;
     font-size: .24rem;
-    border-radius: .05rem;
+    border-radius: .08rem;
+    outline: none;
 }
 
 .pay-way button.sel{
@@ -173,6 +175,19 @@ body {
     color: #ff4081;
 }
 
+.user-center{
+    color: #36395c;
+    font-size: .24rem;
+    background-color: #fff;
+    border:1px solid #ff4081;
+    display: block;
+    width: 3.19rem;
+    height: .56rem;
+    line-height: .56rem;
+    border-radius: .28rem;
+    text-align: center;
+    margin: 0 auto .28rem;
+}
 
 
 
