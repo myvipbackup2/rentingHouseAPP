@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix {
+    overflow: hidden;
+    _zoom: 1;
+}
+
+img {
+    vertical-align: middle;
+    border: 0
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+body {
+    background-color: #f2f2f2;
+    font-family: AvenirRoman, HelveticaNeue-Light, Helvetica Neue, arial, Hiragino Sans GB, 冬青黑体, Microsoft YaHei New, Microsoft Yahei, 微软雅黑, 宋体, SimSun, STXihei, 华文细黑, sans-serif;
+    font-weight: 400;
+}
+
+.container {
+    background-color: #fff;
+    padding: .53rem;
+    margin-top: .14rem;
+    border-top: .01rem solid #e1e1e1;
+}
+
+.order-title {
+    color: #3b4654;
+    text-align: center;
+    font-size: .26rem;
+    display: block;
+    height: .88rem;
+    line-height: .88rem;
+}
+
+.line {
+    height: .58rem;
+    line-height: .58rem;
+}
+
+.hr {
+    height: .02rem;
+    background-color: #dddde0;
+    /*margin-bottom: .1rem;*/
+}
+
+.bold {
+    font-weight: 600;
+    height: .4rem;
+    line-height: .4rem;
+}
+
+.bold span {
+    color: #3b4654;
+}
+
+.info-content {
+    color: #617083;
+    font-size: .26rem;
+}
+
+.info-title {
+    color: #081424;
+    font-size: .26rem;
+}
+
+.money {
+    color: #ff4081;
+    font-size: .32rem;
+}
+
+.p {
+    height: 1.74rem;
+}
+
+.checkbox {
+    height: .68rem;
+    line-height: .68rem;
+}
+
+.checkbox a {
+    margin-left: .26rem;
+    color: #c4cfd7;
+    font-size: .2rem;
+}
+
+.cbox {
+    width: .2rem;
+    height: .2rem;
+    background: url("../images/order-checkbox.svg") no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    margin-left: 1.4rem;
+    margin-top: .23rem;
+    transition: all .2s ease;
+}
+
+.cbox.checked {
+    width: .2rem;
+    height: .2rem;
+    background: url("../images/order-checkbox-sel.svg") no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    transition: all .2s ease;
+}
+
+.submit {
+    display: block;
+    background-color: #ff4081;
+    color: #ffffff;
+    width: 100%;
+    height: .77rem;
+    line-height: .77rem;
+    border-radius: .15rem;
+    font-size: .24rem;
+    text-align: center;
+    text-indent: .04rem;
+    letter-spacing: .04rem;
+    box-shadow: 1px 1px 0 #ef2066;
+}
+
+.back {
+    color: #93939c;
+    font-size: .22rem;
+    letter-spacing: .28rem;
+    margin-top: .25rem;
+}
+
+
+
+
+
+
+
