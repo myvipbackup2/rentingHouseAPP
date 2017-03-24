@@ -1,34 +1,5 @@
 @charset "UTF-8";
 
-.fl {
-    float: left;
-}
-
-.fr {
-    float: right;
-}
-
-.clearfix {
-    overflow: hidden;
-    _zoom: 1;
-}
-
-img {
-    vertical-align: middle;
-    border: 0
-}
-
-a {
-    text-decoration: none;
-    color: #000;
-}
-
-body {
-    background-color: #f2f2f2;
-    font-family: AvenirRoman, HelveticaNeue-Light, Helvetica Neue, arial, Hiragino Sans GB, 冬青黑体, Microsoft YaHei New, Microsoft Yahei, 微软雅黑, 宋体, SimSun, STXihei, 华文细黑, sans-serif;
-    font-weight: 400;
-}
-
 .container {
     background-color: #fff;
     padding: .53rem;
@@ -188,3 +159,8 @@ body {
     text-align: center;
     margin: 0 auto .28rem;
 }
+
+
+
+
+
