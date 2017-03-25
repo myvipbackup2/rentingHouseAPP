@@ -26,18 +26,44 @@
             <li>
                 <span>出租类型</span>
                 <i class="t-icons"></i>
+                <ul class="search_list">
+                    <li>香坊区</li>
+                    <li>南岗区</li>
+                    <li>动力区</li>
+                    <li>道里区</li>
+                    <li>道外区</li>
+                    <li>呼兰区</li>
+                    <li>双城区</li>
+                    <li>江北区</li>
+                </ul>
             </li>
             <li>
                 <span>室友</span>
                 <i class="t-icons"></i>
+                <ul class="search_list">
+                    <li>香坊区</li>
+                    <li>南岗区</li>
+                </ul>
             </li>
             <li>
                 <span>价钱</span>
                 <i class="t-icons"></i>
+                <ul class="search_list">
+                    <li>香坊区</li>
+                    <li>南岗区</li>
+                    <li>动力区</li>
+                </ul>
             </li>
             <li>
                 <span>户型</span>
                 <i class="t-icons"></i>
+                <ul class="search_list">
+                    <li>香坊区</li>
+                    <li>南岗区</li>
+                    <li>动力区</li>
+                    <li>道里区</li>
+                    <li>道外区</li>
+                </ul>
             </li>
         </ul>
     </div>
@@ -89,5 +115,29 @@
     </div>
 
 </div>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+    $(function () {
+        //热门推荐选项卡
+        $('.hot-type').on('click', 'a', function () {
+            $(this).addClass('hot-active').siblings().removeClass('hot-active');
+        });
+        //下拉菜单
+        $('.type-box>ul>li').on('click', function (e) {
+            $(this).find('.search_list').slideToggle(300).end().siblings().find('.search_list').slideUp(300);
+            e.stopPropagation();
+        });
+        //监听点击收起
+        $('body').on('click', function () {
+            $('.search_list').slideUp(300);
+        });
+        //监听滚动收起
+        $(window).on('scroll', function () {
+            $('.search_list').slideUp(300);
+        });
+
+    });
+</script>
 </body>
 </html>
