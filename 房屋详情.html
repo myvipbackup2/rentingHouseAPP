@@ -2,23 +2,211 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="keywords" content="悦居租房"/>
+    <meta name="description" content="悦居租房"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name='apple-touch-fullscreen' content='yes'>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>房屋详情</title>
     <!-- 引入样式 -->
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/mint-ui.min.css">
+    <link rel="stylesheet" href="css/houseDetail.css">
+    <!-- 引入组件库 -->
+    <script src="js/vue.js"></script>
+    <script src="js/mintUI.min.js"></script>
     <script src="js/rem.js"></script>
 </head>
 <body>
 
 <div id="app">
+    <!--房屋详情-->
+    <div class="house_detail">
+        <!--焦点图-->
+        <div class="swipe">
+            <mt-swipe :show-indicators="true" :auto="2500">
+                <mt-swipe-item><img src="images/house_detail/house_test.jpg" alt=""></mt-swipe-item>
+                <mt-swipe-item><img src="images/house_detail/house_test2.jpg" alt=""></mt-swipe-item>
+            </mt-swipe>
+        </div>
+        <!--标题-->
+        <ul class="house-title">
+            <li class="base-info">
+                <h2>哈尔滨梧桐树公寓观景大床房</h2>
+                <div class="price"><em id="spnDisplayPrice"><sub>¥</sub>1700</em></div>
+            </li>
+        </ul>
+        <div class="fd mod-support">
+            <h3 class="title">
+                群力花园
+            </h3>
+            <ul>
+                <li class="s-hx">3室2厅2卫</li>
 
-    <!--焦点图-->
-    <div class="swipe">
-        <mt-swipe :show-indicators="false" :auto="4000">
-            <mt-swipe-item><img src="images/house_test.jpg" alt=""></mt-swipe-item>
-            <mt-swipe-item><img src="images/house_test.jpg" alt=""></mt-swipe-item>
-            <mt-swipe-item><img src="images/house_test.jpg" alt=""></mt-swipe-item>
-        </mt-swipe>
+                <li class="s-mj">170㎡</li>
+
+                <li class="s-xr">宜住6人</li>
+
+                <li class="s-zf">可做饭</li>
+
+                <li class="s-wl">无线网络</li>
+
+                <li class="s-xc" id="bedCount">
+                    4楼
+                    <i class="iconfont-tips"></i>
+                </li>
+            </ul>
+        </div>
+        <div class="fd mod-management">
+            <div class="icon" data-name="hotel_avatar" data-url="/hotel/index/3054/">
+                <img src="images/photo.jpg">
+                <span>恒大集团</span>
+            </div>
+
+            <h2 class="title">房源可售</h2>
+
+            <div class="hotline">
+                <em>400-606-1230</em><i>转</i><em>12347</em>
+                <p>00:00-24:00</p>
+            </div>
+            <div class="link">
+                <a href="tel:4008123123">电话咨询</a>
+            </div>
+        </div>
     </div>
+    <!--点评-->
+    <div class="mod-comments">
+        <div class="bd">
+            <ul class="score">
+                <li id="overall"><em>5</em>评分</li>
+                <li id="totalCount" class="border-l"><em>7</em>点评</li>
+
+            </ul>
+            <div id="sampleComment" class="quote">
+                <div class="quote-content">
+                    <p>酒店服务很好，电瓶车很多，泳池不错，但是距自己离市区有点远，早餐一般吧，可以自己做饭，但是火不太快，比没有强，下次还可以考虑</p>
+                </div>
+            </div>
+            <div class="button-orange-l">
+                <span id="commentsInfo">全部</span>
+            </div>
+        </div>
+    </div>
+    <!--入住退房时间-->
+    <div class="sec-content mod-house DatePicker">
+        <!-- 修改入住时间 -->
+        <div class="hd date">
+            <div class="edi"><span>入住时间：</span><span>{{startDate}}</span></div>
+            <div class="button-orange-l" @click="openStartPicker"><span>修改</span></div>
+            <template>
+                <mt-datetime-picker
+                        ref="pickerStart"
+                        type="date"
+                        v-model="startDate">
+                </mt-datetime-picker>
+            </template>
+        </div>
+        <!-- 修改退房时间 -->
+        <div class="hd date">
+            <div class="edi"><span>退房时间：</span><span>{{endDate}}</span></div>
+            <div class="button-orange-l" @click="openEndPicker"><span>修改</span></div>
+            <template>
+                <mt-datetime-picker
+                        ref="pickerEnd"
+                        type="date"
+                        v-model="endDate">
+                </mt-datetime-picker>
+            </template>
+        </div>
+    </div>
+    <!--订购-->
+    <ul class="product-list">
+        <li class="panel unitproduct ">
+            <div class="panel-hd folder-title folder-title-fold">
+                <div class="info">
+                    <h3>
+                        限量抢购
+                    </h3>
+                    <p class="service">
+                        <span>预付全额</span>
+                        <span>不可退</span>
+                    </p>
+                </div>
+                <div class="price">
+
+                    <div class="price-member">
+                        <em>¥1700</em>
+                    </div>
+
+                    <button class="aCreateOrder book button-orange">
+                        立即预订
+                    </button>
+                </div>
+            </div>
+        </li>
+        <li class="panel unitproduct ">
+            <div class="panel-hd folder-title folder-title-fold">
+                <div class="info">
+                    <h3>
+                        冰雪大世界门票
+                    </h3>
+                    <p class="service">
+                        <span>预付全额</span>
+                        <span>不可退</span>
+                    </p>
+                </div>
+                <div class="price">
+
+                    <div class="price-member">
+                        <em>¥300</em>
+                    </div>
+
+                    <button class="aCreateOrder book button-orange">
+                        立即预订
+                    </button>
+                </div>
+            </div>
+        </li>
+        <li class="panel unitproduct ">
+            <div class="panel-hd folder-title folder-title-fold">
+                <div class="info">
+                    <h3>
+                        限量抢购
+                    </h3>
+                    <p class="service">
+                        <span>预付全额</span>
+                        <span>不可退</span>
+                    </p>
+                </div>
+                <div class="price">
+
+                    <div class="price-member">
+                        <em>¥1700</em>
+                    </div>
+
+                    <button class="aCreateOrder book button-orange">
+                        立即预订
+                    </button>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <!--房源信息-->
+    <section class="sec-content mod-house-info">
+        <h3>房屋信息</h3>
+        <div class="info" v-html="houseDetail"></div>
+        <div class="button-orange-l">
+            <span @click="show">详情</span>
+        </div>
+        <mt-popup
+                v-model="showDetail"
+                popup-transition="popup-fade" v-html="houseDetail">
+        </mt-popup>
+    </section>
 
 </div>
 
@@ -27,13 +215,27 @@
     document.oncontextmenu = new Function("event.returnValue=false;");
     document.onselectstart = new Function("event.returnValue=false;");
 </script>
-<!-- 引入组件库 -->
-<script src="js/vue.js"></script>
-<script src="js/mintUI.min.js"></script>
 <script>
     new Vue({
         el: '#app',
+        data: {
+            startDate: 0,
+            endDate: 0,
+            showDetail: false,
+            houseDetail: '  房屋坐落于宁静的小东海与三亚湾形成的天然双海湾内，毗邻鹿回头公园及鹿回头高尔夫球场。距市中心车程仅8分钟，距著名景区大东海仅3分钟，一山之隔，闹中取静。<br>绝无仅有的双海湾自然景观、面海背山优越地势、珍稀罕有贝壳沙滩……在这里，您既可赤足漫步于自然悠长的贝壳沙滩，朝看旭日、晚观夕阳；又可探索于碧蓝色奇妙海底世界，也可静享悠闲假期。醉于山与海带来的宁静与惬意，体验阳光愉悦、写意人生。<br>房间有：电视机、阳台、观海浴缸、冰箱、厨房、滚筒式洗衣机、宽带上网、吹风机、熨斗及熨板、wifi。<br>距离鹿回头公园1.5公里，乘坐出租车约5分钟；<br>距离夏日百货商场3.5公里，乘坐出租车约10分钟；<br>距离大东海广场4公里，乘坐出租车约15分钟；<br>距离解放路步行街7公里，乘坐出租车约20分钟；<br>距离三亚凤凰国际机场25公里，乘坐出租车约35分钟；<br>距离三亚市汽车站7公里，乘坐出租车约20分钟；<br>距离三亚火车站15公里，乘坐出租车约30分钟。',
 
+        },
+        methods: {
+            openStartPicker: function () {
+                this.$refs.pickerStart.open();
+            },
+            openEndPicker: function () {
+                this.$refs.pickerEnd.open();
+            },
+            show: function () {
+                this.showDetail = true;
+            }
+        }
     })
 </script>
 </body>
