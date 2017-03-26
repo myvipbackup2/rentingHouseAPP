@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>房屋详情</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="css/mint-ui.min.css">
+    <script src="js/rem.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <!--焦点图-->
+    <div class="swipe">
+        <mt-swipe :show-indicators="false" :auto="4000">
+            <mt-swipe-item><img src="images/house_test.jpg" alt=""></mt-swipe-item>
+            <mt-swipe-item><img src="images/house_test.jpg" alt=""></mt-swipe-item>
+            <mt-swipe-item><img src="images/house_test.jpg" alt=""></mt-swipe-item>
+        </mt-swipe>
+    </div>
+
+</div>
+
+
+<script>
+    document.oncontextmenu = new Function("event.returnValue=false;");
+    document.onselectstart = new Function("event.returnValue=false;");
+</script>
+<!-- 引入组件库 -->
+<script src="js/vue.js"></script>
+<script src="js/mintUI.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+
+    })
+</script>
+</body>
+</html>
