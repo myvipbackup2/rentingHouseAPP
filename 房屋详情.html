@@ -24,10 +24,18 @@
 <body>
 
 <div id="app">
+    <!--header 删除本段使用include导入header.php-->
+    <mt-header title="房屋详情" style="color: #000; background-color:#fff;">
+        <router-link to="/" slot="left">
+            <mt-button icon="back">悦居</mt-button>
+        </router-link>
+        <mt-button icon="more" slot="right"></mt-button>
+    </mt-header>
     <!--房屋详情-->
     <div class="house_detail">
         <!--焦点图-->
         <div class="swipe">
+            <div class="favorite" @click="toggleClass" :class="sel"></div>
             <mt-swipe :show-indicators="true" :auto="2500">
                 <mt-swipe-item><img src="images/house_detail/house_test.jpg" alt=""></mt-swipe-item>
                 <mt-swipe-item><img src="images/house_detail/house_test2.jpg" alt=""></mt-swipe-item>
@@ -100,7 +108,7 @@
     <div class="sec-content mod-house DatePicker">
         <!-- 修改入住时间 -->
         <div class="hd date">
-            <div class="edi"><span>入住时间：</span><span>{{startDate}}</span></div>
+            <div class="edi"><span>入住时间：</span><span>{{formatStart}}</span></div>
             <div class="button-orange-l" @click="openStartPicker"><span>修改</span></div>
             <template>
                 <mt-datetime-picker
@@ -112,7 +120,7 @@
         </div>
         <!-- 修改退房时间 -->
         <div class="hd date">
-            <div class="edi"><span>退房时间：</span><span>{{endDate}}</span></div>
+            <div class="edi"><span>退房时间：</span><span>{{formatEnd}}</span></div>
             <div class="button-orange-l" @click="openEndPicker"><span>修改</span></div>
             <template>
                 <mt-datetime-picker
@@ -195,6 +203,9 @@
             </div>
         </li>
     </ul>
+    <!--地图-->
+    <div class="title">哈尔滨梧桐树公寓观景大床房</div>
+    <div id="bMap"></div>
     <!--房源信息-->
     <section class="sec-content mod-house-info">
         <h3>房屋信息</h3>
@@ -207,7 +218,33 @@
                 popup-transition="popup-fade" v-html="houseDetail">
         </mt-popup>
     </section>
+    <!--房屋设施-->
+    <section class="mod-facality">
+        <h3>房屋设施</h3>
+        <div class="service-icons">
+            <span class="icon-facility-wifi">无线网络</span>
+            <span class="icon-facility-hotwater">全天热水</span>
+            <span class="icon-facility-tv">电视</span>
+            <span class="icon-facility-airconditioner">空调</span>
+            <span class="icon-facility-icebox">冰箱</span>
+            <span class="icon-facility-washingmachine">洗衣机</span>
+            <span class="icon-facility-kettle">电水壶</span>
+            <span class="icon-facility-towel">毛巾</span>
+        </div>
+    </section>
+    <!--提供服务-->
+    <ul class="list">
+        <li class="support">
+            <h3>提供服务</h3>
+            <div class="able-list">
+                <span>免费停车</span>
+                <span>行李寄存</span>
+                <span>洗衣服务</span>
+                <span>保安</span>
+            </div>
+        </li>
 
+    </ul>
 </div>
 
 
@@ -216,14 +253,14 @@
     document.onselectstart = new Function("event.returnValue=false;");
 </script>
 <script>
-    new Vue({
+    var vm = new Vue({
         el: '#app',
         data: {
-            startDate: 0,
-            endDate: 0,
+            startDate: "2017-3-27",
+            endDate: "2017-3-29",
             showDetail: false,
-            houseDetail: '  房屋坐落于宁静的小东海与三亚湾形成的天然双海湾内，毗邻鹿回头公园及鹿回头高尔夫球场。距市中心车程仅8分钟，距著名景区大东海仅3分钟，一山之隔，闹中取静。<br>绝无仅有的双海湾自然景观、面海背山优越地势、珍稀罕有贝壳沙滩……在这里，您既可赤足漫步于自然悠长的贝壳沙滩，朝看旭日、晚观夕阳；又可探索于碧蓝色奇妙海底世界，也可静享悠闲假期。醉于山与海带来的宁静与惬意，体验阳光愉悦、写意人生。<br>房间有：电视机、阳台、观海浴缸、冰箱、厨房、滚筒式洗衣机、宽带上网、吹风机、熨斗及熨板、wifi。<br>距离鹿回头公园1.5公里，乘坐出租车约5分钟；<br>距离夏日百货商场3.5公里，乘坐出租车约10分钟；<br>距离大东海广场4公里，乘坐出租车约15分钟；<br>距离解放路步行街7公里，乘坐出租车约20分钟；<br>距离三亚凤凰国际机场25公里，乘坐出租车约35分钟；<br>距离三亚市汽车站7公里，乘坐出租车约20分钟；<br>距离三亚火车站15公里，乘坐出租车约30分钟。',
-
+            houseDetail: '房屋坐落于宁静的小东海与三亚湾形成的天然双海湾内，毗邻鹿回头公园及鹿回头高尔夫球场。距市中心车程仅8分钟，距著名景区大东海仅3分钟，一山之隔，闹中取静。<br>绝无仅有的双海湾自然景观、面海背山优越地势、珍稀罕有贝壳沙滩……在这里，您既可赤足漫步于自然悠长的贝壳沙滩，朝看旭日、晚观夕阳；又可探索于碧蓝色奇妙海底世界，也可静享悠闲假期。醉于山与海带来的宁静与惬意，体验阳光愉悦、写意人生。<br>房间有：电视机、阳台、观海浴缸、冰箱、厨房、滚筒式洗衣机、宽带上网、吹风机、熨斗及熨板、wifi。<br>距离鹿回头公园1.5公里，乘坐出租车约5分钟；<br>距离夏日百货商场3.5公里，乘坐出租车约10分钟；<br>距离大东海广场4公里，乘坐出租车约15分钟；<br>距离解放路步行街7公里，乘坐出租车约20分钟；<br>距离三亚凤凰国际机场25公里，乘坐出租车约35分钟；<br>距离三亚市汽车站7公里，乘坐出租车约20分钟；<br>距离三亚火车站15公里，乘坐出租车约30分钟。',
+            sel: ''
         },
         methods: {
             openStartPicker: function () {
@@ -234,9 +271,40 @@
             },
             show: function () {
                 this.showDetail = true;
+            },
+            formatDate: function (DateStr) {
+                DateStr = Date.parse(DateStr); //字符串转成时间戳
+                var oDate = new Date();
+                oDate.setTime(DateStr);
+                var y = oDate.getFullYear();
+                var M = oDate.getMonth() + 1;
+                var d = oDate.getDate();
+                var dateFormat = y + '-' + M + '-' + d;
+                return dateFormat;
+            },
+            toggleClass: function () {
+                this.sel = this.sel == 'sel' ? '' : 'sel';
+            }
+        },
+        computed: {
+            formatStart: function () {
+                return this.formatDate(this.startDate);
+            },
+            formatEnd: function () {
+                return this.formatDate(this.endDate);
             }
         }
-    })
+    });
+</script>
+<!--百度地图，上线换公钥-->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=O6SLOgDiuYz42TINEWXNRVxGbypytREQ"></script>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("bMap");    // 创建Map实例
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+    map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+    map.setCurrentCity("哈尔滨");          // 设置地图显示的城市 此项是必须设置的
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 </script>
 </body>
 </html>
